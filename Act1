@@ -1,0 +1,12 @@
+import java.util.*;
+public class Act1 {
+static Scanner sc = new Scanner (System. in) ;
+public static void main(String(] args) l
+// TODO code application logic here
+//int myArray[] = new int [5];
+final int MAXSIZE = 5;
+ArrayOperations
+arr = new ArrayOperations (MAXSIZE) ;
+
+arr.populate();
+arr.print();
