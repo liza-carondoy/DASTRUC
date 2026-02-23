@@ -1,0 +1,159 @@
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node prev;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class DoublyLinkedList {
+    Node head;
+    Node tail;
+
+    // Add to head
+    public void addToHead(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+        }
+
+        System.out.println("Added to head.");
+    }
+
+    // Add to tail
+    public void addToTail(int data) {
+        Node newNode = new Node(data);
+
+        if (tail == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+
+        System.out.println("Added to tail.");
+    }
+
+    // Print head
+    public void printHead() {
+        if (head == null) {
+            System.out.println("List is empty.");
+        } else {
+            System.out.println("Head: " + head.data);
+        }
+    }
+
+    // Print tail
+    public void printTail() {
+        if (tail == null) {
+            System.out.println("List is empty.");
+        } else {
+            System.out.println("Tail: " + tail.data);
+        }
+    }
+
+    // Print forward
+    public void printForward() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        System.out.print("Forward: ");
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    // Print backward
+    public void printBackward() {
+        if (tail == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        System.out.print("Backward: ");
+        Node current = tail;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.prev;
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DoublyLinkedList list = new DoublyLinkedList();
+        int choice, value;
+
+        do {
+            System.out.println("\n--- Doubly Linked List Menu ---");
+            System.out.println("1. Add to Head");
+            System.out.println("2. Add to Tail");
+            System.out.println("3. Print Head");
+            System.out.println("4. Print Tail");
+            System.out.println("5. Print Forward");
+            System.out.println("6. Print Backward");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter value: ");
+                    value = scanner.nextInt();
+                    list.addToHead(value);
+                    break;
+
+                case 2:
+                    System.out.print("Enter value: ");
+                    value = scanner.nextInt();
+                    list.addToTail(value);
+                    break;
+
+                case 3:
+                    list.printHead();
+                    break;
+
+                case 4:
+                    list.printTail();
+                    break;
+
+                case 5:
+                    list.printForward();
+                    break;
+
+                case 6:
+                    list.printBackward();
+                    break;
+
+                case 7:
+                    System.out.println("Exiting program...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+
+        } while (choice != 7);
+
+        scanner.close();
+    }
+}
