@@ -1,0 +1,60 @@
+/*
+  Midterm Activity #3
+ Name: Liza Carondoy
+  Date Created: March 11, 2026
+ */
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        StackDLL stack = new StackDLL();
+        int choice, value;
+
+        do {
+            System.out.println("\n STACK MENU:");
+            System.out.println("1. Push");
+            System.out.println("2. Pop");
+            System.out.println("3. Top");
+            System.out.println("4. Display Stack");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter value: ");
+                    value = sc.nextInt();
+                    stack.push(value);
+                    break;
+
+                case 2:
+                    stack.pop();
+                    break;
+
+                case 3:
+                    stack.peek();
+                    break;
+
+                case 4:
+                    stack.display();
+                    break;
+
+                case 5:
+                    System.out.println("Program ended.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
