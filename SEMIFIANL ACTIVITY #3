@@ -1,0 +1,87 @@
+/* Name: Carondoy, Liza N.
+   Date: April 8, 2026 
+   BSIT - DATASTRUCT 
+   Activity #3 Semifinal */
+   
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class SemiFinalAct3_LizaCarondoy {
+    public static void main(String[] args) {
+               
+        LinkedList<String> customerQueue = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        char choice;
+        
+        do {
+           
+            System.out.println("Bank Queue Menu:");
+            System.out.println("a: Add a New Customer");
+            System.out.println("b: Remove a Customer");
+            System.out.println("c: Display Front Customer");
+            System.out.println("d: Count Customers");
+            System.out.println("e: Display All Customers");
+            System.out.println("f: Quit");
+            System.out.print("Enter your choice: ");
+            
+            choice = scanner.next().charAt(0);
+            scanner.nextLine(); // Consume newline
+            
+            switch (choice) {
+                case 'a':
+                    
+                    System.out.print("Enter the name of the new customer: ");
+                    String name = scanner.nextLine();
+                    customerQueue.add(name);
+                    System.out.println("Customer added: " + name);
+                    break;
+                
+                case 'b':
+                    
+                    if (!customerQueue.isEmpty()) {
+                        String removedCustomer = customerQueue.remove();
+                        System.out.println("Customer removed: " + removedCustomer);
+                    } else {
+                        System.out.println("No customers to remove.");
+                    }
+                    break;
+                
+                case 'c':
+                    
+                    if (!customerQueue.isEmpty()) {
+                        System.out.println("Front customer: " + customerQueue.peek());
+                    } else {
+                        System.out.println("No customers in the queue.");
+                    }
+                    break;
+                
+                case 'd':
+                    
+                    System.out.println("Number of customers in the queue: " + customerQueue.size());
+                    break;
+                
+                case 'e':
+                   
+                    if (!customerQueue.isEmpty()) {
+                        System.out.println("All customers in the queue: ");
+                        for (String customer : customerQueue) {
+                            System.out.println(customer);
+                        }
+                    } else {
+                        System.out.println("No customers in the queue.");
+                    }
+                    break;
+                
+                case 'f':
+                   
+                    System.out.println("Exiting the program.");
+                    break;
+                
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 'f');
+        
+        scanner.close();
+    }
+}   
