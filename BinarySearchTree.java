@@ -1,0 +1,58 @@
+/*Name: Liza Carondoy
+  Date: April 15, 2026 */
+  
+public class BinarySearchTree extends BTClass {
+
+    public BinarySearchTree() {
+        super();
+    }
+
+    public BinarySearchTree(BTNode root) {
+        super(root);
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public void insert(int value) {
+        BTNode newNode = new BTNode(null, value, null);
+        if (isEmpty()) {
+            root = newNode;
+        } else {
+            BTNode current = root;
+            BTNode parent = null;
+            while (current != null) {
+                parent = current;
+                if (value < current.info) {
+                    current = current.llink;
+                } else if (value > current.info) {
+                    current = current.rlink;
+                } else {
+                    System.out.println("Duplicate value! " + value + " already exists in the tree.");
+                    return;
+                }
+            }
+            if (value < parent.info) {
+                parent.llink = newNode;
+            } else {
+                parent.rlink = newNode;
+            }
+        }
+        System.out.println(value + " inserted successfully.");
+    }
+
+    public boolean search(int value) {
+        BTNode current = root;
+        while (current != null) {
+            if (value == current.info) {
+                return true;
+            } else if (value < current.info) {
+                current = current.llink;
+            } else {
+                current = current.rlink;
+            }
+        }
+        return false;
+    }
+}
